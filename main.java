@@ -1,4 +1,5 @@
-package Proyecto;
+package Boletin5;
+
 
 import java.util.Scanner;
 
@@ -84,37 +85,37 @@ public static Scanner inputString = new Scanner(System.in);
 
         //FALTA POR COMPLETAR TEXTO
         System.out.println();
-        System.out.println("Si ves un enemigo...");
+        System.out.println("Si ves un enemigo yendo por ti ¿ que haces ?");
         System.out.println("\t1.- Te escondes");
-        System.out.println("\t2.- Le echas huevos");
-        System.out.println("\t3.- Huyes cual ratita");
+        System.out.println("\t2.- Sales a por el como un titan");
+        System.out.println("\t3.- Huyes de el como una ratita");
         opcionTest = inputInt.nextInt();
         calculoPuntuacion(opcionTest);
 
 
         System.out.println();
-        System.out.println("Si blabla un enemigo...");
-        System.out.println("\t1.- Te escondes");
-        System.out.println("\t2.- Le echas huevos");
-        System.out.println("\t3.- Huyes cual ratita");
+        System.out.println("Si eres el unico de los 5 amigos que esta de pie, ¿Te enfrentas a ellos o no?");
+        System.out.println("\t1.- Te escondes y llamas a tu padre");
+        System.out.println("\t2.- Te quitas la camiseta y vas a por ellos");
+        System.out.println("\t3.- Sales cagando leche");
         opcionTest = inputInt.nextInt();
         calculoPuntuacion(opcionTest);
 
 
         System.out.println();
-        System.out.println("Si blabla un enemigo...");
-        System.out.println("\t1.- Te escondes");
-        System.out.println("\t2.- Le echas huevos");
-        System.out.println("\t3.- Huyes cual ratita");
+        System.out.println(" Si el Phoenix se tira la ultimate, ¿ cual de las opciones haria tú?");
+        System.out.println("\t1.- Te quedas en un esquinita escondido hasta que se acabe la ultimate");
+        System.out.println("\t2.- Le echas huevos y vas a matarlo");
+        System.out.println("\t3.- Huyes como una avestruz hasta que se acabe la ultimate");
         opcionTest = inputInt.nextInt();
         calculoPuntuacion(opcionTest);
 
 
         System.out.println();
-        System.out.println("Si blabla un enemigo...");
-        System.out.println("\t1.- Te escondes");
-        System.out.println("\t2.- Le echas huevos");
-        System.out.println("\t3.- Huyes cual ratita");
+        System.out.println("El Chamber utiliza la utlimate.....mmhh ¿ que harias tú?");
+        System.out.println("\t1.- Utilizar el apoyo del equipo y esconderte");
+        System.out.println("\t2.- Vas a por el sin pensarlo");
+        System.out.println("\t3.- Huyes yendo al otro side");
         opcionTest = inputInt.nextInt();
         calculoPuntuacion(opcionTest);
 
@@ -173,14 +174,18 @@ public static Scanner inputString = new Scanner(System.in);
     }
 
     public static void agenteSexoMujer(int puntosLocura, int puntosMiedo, int puntosTactico){
-        if (puntosLocura == 3){
-            System.out.println("Locura");
-        }else if (puntosMiedo == 3){
-            System.out.println("Miedo");
-        }else if (puntosTactico == 3){
-            System.out.println("Táctico");
+        if (puntosLocura == 4){
+            agente = "Jett";
+            System.out.println("Te pareces mucho a " + agente + " porque estas un poco mal de la cabeza");
+        }else if (puntosMiedo == 4){
+            agente = "Fade";
+            System.out.println("Eres un poco miedoso... te viene al pelo ser " + agente);
+        }else if (puntosTactico == 4){
+            agente = "Sage";
+            System.out.println("Pareces bastante táctico, tu serías " + agente + " seguro");
         }else {
-            System.out.println("Equilibrado");
+            agente = "Killjoy";
+            System.out.println("Eres alguien bastante equilibrado, podrías ser " + agente);
         }
     }
 
@@ -236,23 +241,23 @@ public static Scanner inputString = new Scanner(System.in);
                     //FALTA POR COMPLETAR TEXTO
                     switch(eleccionUsuarioInt){
                         case 1:
-                            System.out.println("");
+                            System.out.println("El mejor agente para apoyar a la Sage es Yoru, ya que  podrias sorprender un poco con los tp´s de Yoru y los muros de Sage ");
                             System.out.println();
                             break;
                         case 2:
-                            System.out.println("");
+                            System.out.println("El mejor agente que podria apoyar a la Raze sería la Astra, ya que podrías combinar ambas utilidades.");
                             System.out.println();
                             break;
                         case 3:
-                            System.out.println("");
+                            System.out.println("Skye....hmmmm, el mejor agente para acompañarle sería la Reyna.");
                             System.out.println();
                             break;
                         case 4:
-                            System.out.println("");
+                            System.out.println("Astra....Raze sería una de las mejores opciones para apoyar a este personaje.");
                             System.out.println();
                             break;
                         case 5:
-                            System.out.println("");
+                            System.out.println("El mejor agente para apoyar a la killjoy podrian ser varios... por ejemplo el kayO o fade ya que tienen utilidades que te podrian dejar muerto de 1.");
                             System.out.println();
                             break;
                         case 6:
