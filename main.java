@@ -2,6 +2,8 @@ package Proyecto;
 
 import java.util.Scanner;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 public class main {
 
 public static int puntosTactico=0, puntosLocura=0, puntosMiedo=0, testCompletado=0, sexo=0;
@@ -35,8 +37,10 @@ public static Scanner inputString = new Scanner(System.in);
                     }
                     break;
                 case 4:
+                    medidorRango();
                     break;
                 case 5:
+                    creditosCreador();
                     break;
                 case 6:
                     bucle = false;
@@ -213,6 +217,10 @@ public static Scanner inputString = new Scanner(System.in);
                         System.out.println("El mejor agente con Chamber... este personaje si quiera necesita compañia? Gana");
                         System.out.println();
                         break;
+                    case 6:
+                        System.out.println("Volviendo al menú.");
+                        System.out.println();
+                        break;
                     default:
                         System.out.println("Elige una opción válida.");
                         System.out.println();
@@ -247,6 +255,10 @@ public static Scanner inputString = new Scanner(System.in);
                             System.out.println("");
                             System.out.println();
                             break;
+                        case 6:
+                            System.out.println("Volviendo al menú.");
+                            System.out.println();
+                            break;
                         default:
                             System.out.println("Elige una opción válida.");
                             System.out.println();
@@ -275,6 +287,7 @@ public static Scanner inputString = new Scanner(System.in);
         System.out.println("\t3.- KayO");
         System.out.println("\t4.- Brimstone");
         System.out.println("\t5.- Chamber");
+        System.out.println("\t6.- Salir");
         System.out.println();
     }
 
@@ -286,6 +299,7 @@ public static Scanner inputString = new Scanner(System.in);
         System.out.println("\t3.- Skye");
         System.out.println("\t4.- Astra");
         System.out.println("\t5.- KillJoy");
+        System.out.println("\t6.- Salir");
         System.out.println();
     }
 
@@ -331,4 +345,110 @@ public static Scanner inputString = new Scanner(System.in);
     }
 
     //MÉTODOS PARA LA CUARTA OPCIÓN DEL MENÚ
+
+    public static void medidorRango(){
+        String continuarMedidorRango, continuarMedidorRangoLower;
+        int puntuacion=0, eleccionUsuarioInt=0;
+
+        System.out.println("El medidor de rango constirá en 3 breves preguntas que van a ir aumentando según avance el test.");
+        System.out.println("¿Estás preparado? Si/No");
+        continuarMedidorRango = inputString.nextLine();
+        System.out.println();
+        continuarMedidorRangoLower = continuarMedidorRango.toLowerCase();
+        if (continuarMedidorRangoLower.equals("si")){
+            System.out.println("Medidor de rango");
+            System.out.println("----------------------");
+            System.out.println("PRIMERA PREGUNTA");
+            System.out.println("Si el equipo enemigo planta la spike que deben hacer (en orden)");
+            System.out.println("\t1.- Matar a los enemigos, usar las utilidades, desactivar la spike");
+            System.out.println("\t2.- Usar las utilizades, matar a los enemigos, desactivar la skipe");
+            System.out.println("\t3.- Desactivar la spike, usar las utilizades, matar al enemigo");
+            eleccionUsuarioInt = inputInt.nextInt();
+            System.out.println();
+            
+            if (eleccionUsuarioInt == 1){
+                System.out.println("ERROR!");
+                System.out.println();
+            }else if (eleccionUsuarioInt == 2){
+                System.out.println("CORRECTO!");
+                puntuacion++;
+                System.out.println();
+            }else if (eleccionUsuarioInt == 3){
+                System.out.println("ERROR!");
+                System.out.println();
+            }else{
+                System.out.println("Por introducir una respuesta invalida se te valorará como mal está pregunta.");
+                System.out.println();
+            }
+
+            System.out.println("SEGUNDA PREGUNTA");
+            System.out.println("Estás en 1 vs 1 contra el rival, tienes la spike y sabes que el está en la otra punta del mapa ¿Que haces?");
+            System.out.println("\t1.- Vas a buscarlo y matarlo.");
+            System.out.println("\t2.- Guardas arma para la siguiente ronda.");
+            System.out.println("\t3.- Plantas la spike y te posiciones para cubrirla.");
+            eleccionUsuarioInt = inputInt.nextInt();
+            System.out.println();
+
+            if (eleccionUsuarioInt == 1){
+                System.out.println("ERROR!");
+                System.out.println();
+            }else if (eleccionUsuarioInt == 2){
+                System.out.println("ERROR!");
+                System.out.println();
+            }else if (eleccionUsuarioInt == 3){
+                System.out.println("CORRECTO!");
+                puntuacion++;
+                System.out.println();
+            }else{
+                System.out.println("Por introducir una respuesta invalida se te valorará como mal está pregunta.");
+                System.out.println();
+            }
+
+            System.out.println("TERCERA PREGUNTA");
+            System.out.println("Si todo tu equipo ha muerto, el equipo enemigo está en una ronda eco y solo quedas tú ¿Que haces?");
+            System.out.println("\t1.- Guardas arma para la siguiente ronda.");
+            System.out.println("\t2.- Vas a matar al equipo enemigo.");
+            System.out.println("\t3.- Intentas sacar alguna kill para después retroceder.");
+            eleccionUsuarioInt = inputInt.nextInt();
+            System.out.println();
+
+            if (eleccionUsuarioInt == 1){
+                System.out.println("CORRECTO!");
+                puntuacion++;
+                System.out.println();
+            }else if (eleccionUsuarioInt == 2){
+                System.out.println("ERROR!");
+                System.out.println();
+            }else if (eleccionUsuarioInt == 3){
+                System.out.println("ERROR!");
+                System.out.println();
+            }else{
+                System.out.println("Por introducir una respuesta invalida se te valorará como mal está pregunta.");
+                System.out.println();
+            }
+
+            if (puntuacion == 3){
+                System.out.println("Eres un Radiant!");
+            }else if (puntuacion == 2){
+                System.out.println("Eres un simple Platino");
+            }else if( puntuacion == 1){
+                System.out.println("No te pongo menos rango porque no existe... Hierro");
+            }else{
+                System.out.println("Ha surgido un error.");
+            }
+        }
+        else if (continuarMedidorRangoLower.equals("no")){
+            System.out.println("Vale, pues te pasamos de nuevo con el menú.");
+            System.out.println();
+        }else {
+            System.out.println("Introduce una opción correcta la próxima vez.");
+            System.out.println();
+        }
+    } 
+
+    public static void creditosCreador(){
+        System.out.println("Los autores de este maravilloso programa son:");
+        System.out.println("Francisco Diaz Pozuelo (Cisco)");
+        System.out.println("Abdel'lah Achiban Kaddouri (Hasbullah)");
+    }
 }
