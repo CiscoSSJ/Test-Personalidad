@@ -1,9 +1,6 @@
 package Boletin5;
 
-
 import java.util.Scanner;
-
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 public class main {
 
