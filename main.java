@@ -1,5 +1,3 @@
-package Boletin5;
-
 import java.util.Scanner;
 
 public class main {
@@ -38,9 +36,15 @@ public static Scanner inputString = new Scanner(System.in);
                     medidorRango();
                     break;
                 case 5:
-                    creditosCreador();
+                    mostrarAgenteAleatorio();
                     break;
                 case 6:
+                    rangoAleatorio();
+                    break;
+                case 7:
+                    creditosCreador();
+                    break;
+                case 8:
                     bucle = false;
                     break;
             }
@@ -58,8 +62,10 @@ public static Scanner inputString = new Scanner(System.in);
             System.out.println("\t2.- ¿Cuál es el mejor duo con tu agente favorito?");
             System.out.println("\t3.- Mejor mapa según el agente asignado en el test");
             System.out.println("\t4.- Medidor de rango");
-            System.out.println("\t5.- Ver crédito");
-            System.out.println("\t6.- Salir del programa");
+            System.out.println("\t5.- Muestra agente aleatorio");
+            System.out.println("\t6.- Acertar rango aleatorio");
+            System.out.println("\t7.- Ver crédito");
+            System.out.println("\t8.- Salir del programa");
             opcionMenu = inputInt.nextInt();
             System.out.println();
 
@@ -136,12 +142,13 @@ public static Scanner inputString = new Scanner(System.in);
         System.out.println("\t2.- Mujer");
         sexo = inputInt.nextInt();
         System.out.println();
-        if (sexo == 1 || sexo == 2){
-            return sexo;
-        }else{
+
+        if (sexo < 1 || sexo > 2){
             System.out.println("Porfavor, introduzca un valor correcto la próxima vez");
-            return sexo=0;
+            sexo=0;
         }
+
+        return sexo;
     }
 
     //MÉTODOS DE LA PRIMERA OPCIÓN DEL MENÚ
@@ -315,11 +322,10 @@ public static Scanner inputString = new Scanner(System.in);
         System.out.println();
         if (eleccionUsuarioStringLower.equals("no")){
             respuesta = false;
-            return respuesta;
         }else{
             respuesta = true;
-            return respuesta;
         }
+        return respuesta;
     }
 
     //MÉTODOS PARA LA TERCERA OPCIÓN DEL MENÚ
@@ -448,6 +454,44 @@ public static Scanner inputString = new Scanner(System.in);
         }
     } 
 
+    //NÉTODOS QUINTA OPCIÓN
+
+    public static void mostrarAgenteAleatorio(){
+        int random;
+        String[] agenteAleatorio = new String[] {"Cypher","Yoru","KayO","Brimstone","Chamber","Sage","Raze","Skye","Astra","KillJoy"};
+        random = (int) (Math.random()*(9+0)+1);
+        System.out.println("Te ha tocado " + agenteAleatorio[random]);
+    }
+    //MÉTODOS SEXTA OPCIÓN
+    public static void rangoAleatorio(){
+        int random;
+        String rangoUsuario, rangoUsuarioLower;
+        String[] rangoAleatorio = new String[] {"hierro","bronce","plata","oro","platino","diamante","ascendente","inmortal","radiante"};
+        random = (int) (Math.random()*(8+0)+1);
+
+        System.out.println("Lista de rangos");
+        System.out.println("---------------");
+        for(String mostrarArray :rangoAleatorio){
+            System.out.println(mostrarArray);
+        }
+        System.out.println();
+        
+        System.out.println("¿Que rango crees que es?");
+        rangoUsuario = inputString.nextLine();
+        rangoUsuarioLower = rangoUsuario.toLowerCase();
+        System.out.println();
+
+        while (!rangoAleatorio[random].equals(rangoUsuarioLower)){
+            System.out.println("Intentalo de nuevo");
+            rangoUsuario = inputString.nextLine();
+            rangoUsuarioLower = rangoUsuario.toLowerCase();
+            System.out.println();
+        }
+
+        System.out.println("Enhorabuena!");
+    }
+
+    //MÉTODOS SEPTIMA OPCIÓN
     public static void creditosCreador(){
         System.out.println("Los autores de este maravilloso programa son:");
         System.out.println("Francisco Diaz Pozuelo (Cisco)");
