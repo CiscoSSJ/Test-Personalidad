@@ -45,6 +45,7 @@ public static Scanner inputString = new Scanner(System.in);
                     creditosCreador();
                     break;
                 case 8:
+                    valoracionFinal();
                     bucle = false;
                     break;
             }
@@ -53,7 +54,9 @@ public static Scanner inputString = new Scanner(System.in);
 
     public static int menu(){
         boolean continuarBucle = true;
+        String opcionMenuString;
         int opcionMenu = 0;
+
         while (continuarBucle){
             System.out.println();
             System.out.println("TEST DE VALORANT");
@@ -64,12 +67,18 @@ public static Scanner inputString = new Scanner(System.in);
             System.out.println("\t4.- Medidor de rango");
             System.out.println("\t5.- Muestra agente aleatorio");
             System.out.println("\t6.- Acertar rango aleatorio");
-            System.out.println("\t7.- Ver crédito");
+            System.out.println("\t7.- Ver créditos");
             System.out.println("\t8.- Salir del programa");
-            opcionMenu = inputInt.nextInt();
+            try {
+                opcionMenuString = inputString.nextLine();
+                Integer opcionMenuInt = Integer.parseInt(opcionMenuString);
+                opcionMenu = opcionMenuInt;
+            }catch(NumberFormatException ex){
+            }
+            
             System.out.println();
 
-            if (opcionMenu < 7 && opcionMenu > 0){
+            if (opcionMenu <= 8 && opcionMenu > 0){
                 continuarBucle = false;
             }else{
                 System.out.println("Introduce una opción válida.");
@@ -137,17 +146,30 @@ public static Scanner inputString = new Scanner(System.in);
     //MÉTODOS GLOBALES
 
     public static int comprobarSexo(){
-        System.out.println("¿Cuál es tu sexo?");
-        System.out.println("\t1.- Hombre");
-        System.out.println("\t2.- Mujer");
-        sexo = inputInt.nextInt();
-        System.out.println();
+        String sexoString;
+        boolean continuar = true;
 
-        if (sexo < 1 || sexo > 2){
-            System.out.println("Porfavor, introduzca un valor correcto la próxima vez");
-            sexo=0;
+        while (continuar){
+            System.out.println("¿Cuál es tu sexo?");
+            System.out.println("\t1.- Hombre");
+            System.out.println("\t2.- Mujer");
+            try {
+                sexoString = inputString.nextLine();
+                Integer sexoInt = Integer.parseInt(sexoString);
+                sexo = sexoInt;
+                System.out.println();
+            }catch(NumberFormatException ex){
+            }
+            
+
+            if (sexo < 1 || sexo > 2){
+                System.out.println("Porfavor, introduzca un valor correcto la próxima vez");
+                System.out.println();
+                sexo=0;
+            }else if (sexo >= 1 || sexo <= 2){
+                continuar = false;
+            }
         }
-
         return sexo;
     }
 
@@ -496,5 +518,44 @@ public static Scanner inputString = new Scanner(System.in);
         System.out.println("Los autores de este maravilloso programa son:");
         System.out.println("Francisco Diaz Pozuelo (Cisco)");
         System.out.println("Abdel'lah Achiban Kaddouri (Hasbullah)");
+    }
+
+    //MÉTODOS OCTAVA OPCIÓN
+    public static void valoracionFinal(){
+        int respuestaUsuario, respuestaUsuarioSi;
+        boolean continuar = true;
+
+        System.out.println();
+        System.out.println("Gracias por visitar nuestro programa!");
+        System.out.println("Con una simple valoración nos ayudas mucho a mejorar ¿Tendrías 30 segundos para nosotros?");
+        System.out.println("\t1.- Si");
+        System.out.println("\t2.- No");
+        respuestaUsuario = inputInt.nextInt();
+        System.out.println();
+
+        while (continuar){
+            if (respuestaUsuario == 1){
+                System.out.println("Del 1 al 10 como valorarías el programa.");
+                respuestaUsuarioSi = inputInt.nextInt();
+                System.out.println();
+                if (respuestaUsuarioSi >=7 && respuestaUsuarioSi <= 10){
+                    System.out.println("Muchas gracias!, nos alegramos que te haya gustado.");
+                    continuar = false;
+                }else if (respuestaUsuarioSi < 7 && respuestaUsuarioSi >= 3){
+                    System.out.println("Vaya.. seguro que tenemos muchas cosas que mejorar.");
+                    continuar = false;
+                }else if (respuestaUsuarioSi < 3 && respuestaUsuarioSi >= 0){
+                    System.out.println("Pues parece que has estado perdiendo el tiempoo con nosotros...");
+                    continuar = false;
+                }else{
+                    System.out.println("Por favor, introduce una valoración entre 1 y 10.");
+                }
+            }else if(respuestaUsuario == 2 ){
+                System.out.println("Ten un buen día!");
+                continuar = false;
+            }else{
+                System.out.println("Por favor, introduce una opción válida.");
+            }
+        }
     }
 }
