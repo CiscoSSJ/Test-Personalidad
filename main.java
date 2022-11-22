@@ -2,16 +2,22 @@ import java.util.Scanner;
 
 public class main {
 
+//Creación e inicialización de variables y objetos globales
 public static int puntosTactico=0, puntosLocura=0, puntosMiedo=0, testCompletado=0, sexo=0;
 public static String agente;
 public static Scanner inputInt = new Scanner(System.in);
 public static Scanner inputString = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	
+	public static void main(String[] args){
+        /*Creación e inicialización de variables */
         boolean bucle = true;
-        String respuestaTest;
         int respuestaMenu;
         
+        /*Entra en un bucle que llama a un método que muestra un menú y devuelve un int como opción 
+         * esa opción la utiliza para entrar en un switch y hacer la opción en función a lo que eliga el usuario
+         * en el caso de que la opción sea 8 le da a la variable booleana bucle el valor de false y sale del bucle en la siguiente iteración
+         */
         while (bucle){
             respuestaMenu = menu();
             switch (respuestaMenu){
@@ -52,7 +58,12 @@ public static Scanner inputString = new Scanner(System.in);
         }
     }
 
+	/**
+	 * Muestra un menú y pide al usuario que elija una opción
+	 * @return Devuelve la opción elegida por el usuario
+	 */
     public static int menu(){
+    	/*Creación e inicialización de variables */
         boolean continuarBucle = true;
         String opcionMenuString;
         int opcionMenu = 0;
@@ -69,6 +80,7 @@ public static Scanner inputString = new Scanner(System.in);
             System.out.println("\t6.- Acertar rango aleatorio");
             System.out.println("\t7.- Ver créditos");
             System.out.println("\t8.- Salir del programa");
+            //Captura una excepción si el formato del dato introducido no es INT
             try {
                 opcionMenuString = inputString.nextLine();
                 Integer opcionMenuInt = Integer.parseInt(opcionMenuString);
@@ -78,31 +90,53 @@ public static Scanner inputString = new Scanner(System.in);
             
             System.out.println();
 
+            //Comprueba que la opción introducida este dentro del rango mostrado. (1-8)
             if (opcionMenu <= 8 && opcionMenu > 0){
+                //Si lo cumple acaba el bucle
                 continuarBucle = false;
             }else{
+                //Si la opción no cumple muestra un mensaje error
                 System.out.println("Introduce una opción válida.");
             }
         }
+        //Devuelve la opción del menú
         return opcionMenu;
     }
 
-    public static void test() {
+    /**
+     * Llama a un método que te pregunta cual es tu sexo, si este método a sido llamado previamente
+     * lo ignora y 
+     * Va pasando por preguntas y preguntando la respuesta, dependiendo de esta la pasa como parámetro
+     * a otro métodos
+     * Luego muestra el personaje que te corresponda en función de tu sexo
+     */
+    public static void test(){
+    	/*Creación e inicialización de variables */
+        String opcionString;
         int opcionTest;
 
-        if (sexo == 0){
+        //Comproba que el método comprobarSexo no se haya llamado en otro momento, si no es así lo llama
+        if (sexo < 1 && sexo > 2 ){
             System.out.println();
             comprobarSexo();
         }
 
-        //FALTA POR COMPLETAR TEXTO
+        //PRIMERA PREGUNTA
         System.out.println();
         System.out.println("Si ves un enemigo yendo por ti ¿ que haces ?");
         System.out.println("\t1.- Te escondes");
         System.out.println("\t2.- Sales a por el como un titan");
         System.out.println("\t3.- Huyes de el como una ratita");
-        opcionTest = inputInt.nextInt();
-        calculoPuntuacion(opcionTest);
+        //Captura una excepción si el formato del dato introducido no es INT
+        try {
+            opcionString = inputString.nextLine();
+            Integer opcionInt = Integer.parseInt(opcionString);
+            opcionTest = opcionInt;
+            calculoPuntuacion(opcionTest);
+            System.out.println();
+        }catch(NumberFormatException ex){
+        }
+
 
 
         System.out.println();
@@ -110,8 +144,15 @@ public static Scanner inputString = new Scanner(System.in);
         System.out.println("\t1.- Te escondes y llamas a tu padre");
         System.out.println("\t2.- Te quitas la camiseta y vas a por ellos");
         System.out.println("\t3.- Sales cagando leche");
-        opcionTest = inputInt.nextInt();
-        calculoPuntuacion(opcionTest);
+        //Captura una excepción si el formato del dato introducido no es INT
+        try {
+            opcionString = inputString.nextLine();
+            Integer opcionInt = Integer.parseInt(opcionString);
+            opcionTest = opcionInt;
+            calculoPuntuacion(opcionTest);
+            System.out.println();
+        }catch(NumberFormatException ex){
+        }
 
 
         System.out.println();
@@ -119,8 +160,15 @@ public static Scanner inputString = new Scanner(System.in);
         System.out.println("\t1.- Te quedas en un esquinita escondido hasta que se acabe la ultimate");
         System.out.println("\t2.- Le echas huevos y vas a matarlo");
         System.out.println("\t3.- Huyes como una avestruz hasta que se acabe la ultimate");
-        opcionTest = inputInt.nextInt();
-        calculoPuntuacion(opcionTest);
+        //Captura una excepción si el formato del dato introducido no es INT
+        try {
+            opcionString = inputString.nextLine();
+            Integer opcionInt = Integer.parseInt(opcionString);
+            opcionTest = opcionInt;
+            calculoPuntuacion(opcionTest);
+            System.out.println();
+        }catch(NumberFormatException ex){
+        }
 
 
         System.out.println();
@@ -128,10 +176,18 @@ public static Scanner inputString = new Scanner(System.in);
         System.out.println("\t1.- Utilizar el apoyo del equipo y esconderte");
         System.out.println("\t2.- Vas a por el sin pensarlo");
         System.out.println("\t3.- Huyes yendo al otro side");
-        opcionTest = inputInt.nextInt();
-        calculoPuntuacion(opcionTest);
+        //Captura una excepción si el formato del dato introducido no es INT	
+        try {
+            opcionString = inputString.nextLine();
+            Integer opcionInt = Integer.parseInt(opcionString);
+            opcionTest = opcionInt;
+            calculoPuntuacion(opcionTest);
+            System.out.println();
+        }catch(NumberFormatException ex){
+        }
 
         
+     	//Muestra el personaje que sea más acorde según las respuestas dependiendo del sexo del usuario
         if ( sexo == 1){
             agenteSexoHombre(puntosLocura, puntosMiedo, puntosTactico);
         }else if (sexo == 2) {
@@ -140,15 +196,20 @@ public static Scanner inputString = new Scanner(System.in);
             System.out.println("Porfavor, introduce un valor correcto la próxima vez.");
         }
 
+        //Esta variable se usará para que no se pueda acceder al test más de una vez.
         testCompletado = 1;
     }
 
-    //MÉTODOS GLOBALES
-
+    /**
+     * Comprueba el sexo del usuario 
+     * @return Devuelve el sexo del usuario.
+     */
     public static int comprobarSexo(){
+        //Declaración e inicialización de variables 
         String sexoString;
         boolean continuar = true;
 
+        //
         while (continuar){
             System.out.println("¿Cuál es tu sexo?");
             System.out.println("\t1.- Hombre");
@@ -181,6 +242,8 @@ public static Scanner inputString = new Scanner(System.in);
             puntosLocura++;
         }else if (opcionTest == 3){
             puntosMiedo++;
+        }else{
+            System.out.println("Parece que ha habido algún fallo.");
         }
     }
     public static void agenteSexoHombre(int puntosLocura, int puntosMiedo, int puntosTactico){
